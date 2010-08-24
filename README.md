@@ -53,7 +53,7 @@ The hostname will also be logged upon application start:
 A transaction ID will be logged for each incoming request:
 
     $ grep TransactionIdMiddleware log/production.log
-    [E20::Deployment::TransactionIdMiddleware] Transaction ID: 111d3180-91f4-012d-ce1a-549a20d01d99
+    [E20::Ops::Middleware::TransactionIdMiddleware] Transaction ID: 111d3180-91f4-012d-ce1a-549a20d01d99
 
 The transaction ID will also be passed as an HTTP header:
 
