@@ -1,0 +1,5 @@
+gem "jeweler"
+gem "rspec"
+gem "rake"
+gem "uuid"
+gem "activesupport", "~> 2.3.8"
