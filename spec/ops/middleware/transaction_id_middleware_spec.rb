@@ -15,10 +15,10 @@ describe E20::Ops::Middleware::TransactionIdMiddleware do
     body.should == "OK!"
   end
 
-  it "sets an X-Transaction-Id header" do
+  it "sets an X-Transaction header" do
     middleware = E20::Ops::Middleware::TransactionIdMiddleware.new(app, :uuid_generator => uuid, :logger => logger)
     status, headers, body = middleware.call({})
-    headers["X-Transaction-Id"].should == "abc123"
+    headers["X-Transaction"].should == "abc123"
   end
 
   it "logs a line for each request" do

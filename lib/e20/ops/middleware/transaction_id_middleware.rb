@@ -17,7 +17,7 @@ module E20
           @logger.info "[#{self.class.name}] Transaction ID: #{uuid}"
 
           status, headers, body = @app.call(env)
-          headers["X-Transaction-Id"] = uuid
+          headers["X-Transaction"] = uuid
           [status, headers, body]
         end
 
