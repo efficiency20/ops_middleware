@@ -11,7 +11,9 @@ describe E20::Ops::Revision do
 
   context "when a REVISION file is not present" do
     it "adds a X-Revision header with the git rev-parse HEAD" do
-      E20::Ops::Revision.new.to_s.should == `git rev-parse HEAD`.strip
+      revision = E20::Ops::Revision.new
+      revision.should_receive(:`).with("git rev-parse HEAD").and_return("abc123")
+      revision.to_s.should == "abc123"
     end
   end
 
