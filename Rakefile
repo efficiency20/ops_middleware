@@ -6,7 +6,7 @@ require 'jeweler'
 
 Jeweler::Tasks.new do |gem|
   gem.name = "e20_ops_middleware"
-  gem.summary = "Operations support gem for Efficiency 2.0 projects"
+  gem.summary = "Collection of useful middleware for exposing information about deployed Rack applications"
   gem.email = "tech@efficiency20.com"
   gem.homepage = "http://github.com/efficiency20/ops_middleware"
   gem.description = "Adds middleware for debugging purposes"
