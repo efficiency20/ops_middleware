@@ -1,4 +1,5 @@
 require "spec_helper"
+require "tmpdir"
 
 describe E20::Ops::Revision do
   context "when a REVISION file is present" do
