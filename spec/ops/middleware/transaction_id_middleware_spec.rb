@@ -2,7 +2,7 @@ require "spec_helper"
 
 describe E20::Ops::Middleware::TransactionIdMiddleware do
   let(:app)    { Proc.new { |env| [200, {}, "OK!"] } }
-  let(:uuid)   { stub(:generate => "abc123") }
+  let(:uuid)   { stub(:call => "abc123") }
   let(:logger) { Logger.new(StringIO.new) }
 
   it "is initialized with an app" do

@@ -8,12 +8,12 @@ module E20
 
         def initialize(app, options = {})
           @app = app
-          @uuid_generator = options[:uuid_generator] || UUID.new
+          @uuid_generator = options[:uuid_generator] || UUID.new.method(:generate)
           @logger = options[:logger] || Logger.new(STDOUT)
         end
 
         def call(env)
-          uuid = @uuid_generator.generate
+          uuid = @uuid_generator.call.to_s
           @logger.info "[#{self.class.name}] Transaction ID: #{uuid}"
 
           status, headers, body = @app.call(env)
