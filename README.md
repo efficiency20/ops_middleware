@@ -23,7 +23,7 @@ Install
 
 Add to your `Gemfile`:
 
-    gem "e20_ops_middleware"
+    gem "e20_ops_middleware", :require => "e20/ops/middleware"
 
 Install the gem:
 
@@ -83,7 +83,7 @@ HTTP header:
     Content-Type: text/html; charset=utf-8
     Content-Length: 3304
     X-Served-By: fulton
-    
+
 The hostname will also be logged upon application start:
 
     $ grep HostnameMiddleware log/production.log
