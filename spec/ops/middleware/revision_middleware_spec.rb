@@ -11,7 +11,7 @@ describe E20::Ops::Middleware::RevisionMiddleware do
     it "returns the current running revision" do
       middleware = E20::Ops::Middleware::RevisionMiddleware.new(app, :revision => "rev")
       status, headers, body = middleware.call({"PATH_INFO" => "/system/revision"})
-      body.should == "rev\n"
+      body.should == ["rev\n"]
     end
   end
 

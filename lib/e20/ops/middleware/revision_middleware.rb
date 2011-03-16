@@ -15,7 +15,7 @@ module E20
         def call(env)
           if env["PATH_INFO"] == "/system/revision"
             body = "#{@revision}\n"
-            [200, { "Content-Type" => "text/plain", "Content-Length" => body.size.to_s }, body]
+            [200, { "Content-Type" => "text/plain", "Content-Length" => body.size.to_s }, [body]]
           else
             status, headers, body = @app.call(env)
             headers["X-Revision"] = @revision.to_s
