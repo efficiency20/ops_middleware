@@ -1,4 +1,3 @@
 .bundle
 vendor
-*.gemspec
 pkg
