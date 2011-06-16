@@ -15,10 +15,11 @@ describe E20::Ops::Middleware::TransactionIdMiddleware do
     body.should == "OK!"
   end
 
-  it "defaults to a 32 character transaction id" do
+  it "defaults to a 36 character transaction id with dashes" do
     middleware = E20::Ops::Middleware::TransactionIdMiddleware.new(app, :logger => logger)
     status, headers, body = middleware.call({})
-    headers["X-Transaction"].size.should == 32
+    headers["X-Transaction"].size.should == 36
+    headers["X-Transaction"].should include('-')
   end
 
   it "sets an X-Transaction header" do

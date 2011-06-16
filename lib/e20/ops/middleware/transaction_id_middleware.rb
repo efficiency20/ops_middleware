@@ -8,7 +8,7 @@ module E20
 
         def initialize(app, options = {})
           @app = app
-          @uuid_generator = options[:uuid_generator] || lambda { UUID.generate(:compact) }
+          @uuid_generator = options[:uuid_generator] || UUID.method(:generate)
           @logger = options[:logger] || Logger.new(STDOUT)
         end
 
