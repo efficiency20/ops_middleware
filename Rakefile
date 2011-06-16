@@ -11,7 +11,7 @@ Jeweler::Tasks.new do |gem|
   gem.homepage = "http://github.com/efficiency20/ops_middleware"
   gem.description = "Adds middleware for debugging purposes"
   gem.authors = ["Efficiency 2.0"]
-  gem.add_dependency "uuidtools", "~> 2.1"
+  gem.add_dependency "uuid", "~> 2.3.2"
   gem.add_development_dependency "rspec", "~> 1.3.0"
 end
 

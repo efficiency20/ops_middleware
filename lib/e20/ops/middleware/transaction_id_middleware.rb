@@ -1,4 +1,4 @@
-require "uuidtools"
+require "uuid"
 require "logger"
 
 module E20
@@ -8,7 +8,7 @@ module E20
 
         def initialize(app, options = {})
           @app = app
-          @uuid_generator = options[:uuid_generator] || UUIDTools::UUID.method(:random_create)
+          @uuid_generator = options[:uuid_generator] || lambda { UUID.generate(:compact) }
           @logger = options[:logger] || Logger.new(STDOUT)
         end
 

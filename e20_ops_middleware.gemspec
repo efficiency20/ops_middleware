@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Efficiency 2.0"]
-  s.date = %q{2011-03-16}
+  s.date = %q{2011-06-15}
   s.description = %q{Adds middleware for debugging purposes}
   s.email = %q{tech@efficiency20.com}
   s.extra_rdoc_files = [
@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
      "Rakefile",
      "VERSION",
      "ci.rb",
+     "e20_ops_middleware.gemspec",
      "lib/e20/ops/hostname.rb",
      "lib/e20/ops/middleware.rb",
      "lib/e20/ops/middleware/hostname_middleware.rb",
@@ -41,7 +42,7 @@ Gem::Specification.new do |s|
   s.homepage = %q{http://github.com/efficiency20/ops_middleware}
   s.rdoc_options = ["--charset=UTF-8"]
   s.require_paths = ["lib"]
-  s.rubygems_version = %q{1.5.2}
+  s.rubygems_version = %q{1.4.2}
   s.summary = %q{Collection of useful middleware for exposing information about deployed Rack applications}
   s.test_files = [
     "spec/ops/hostname_spec.rb",
@@ -56,14 +57,14 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<uuidtools>, ["~> 2.1"])
+      s.add_runtime_dependency(%q<uuid>, ["~> 2.3.2"])
       s.add_development_dependency(%q<rspec>, ["~> 1.3.0"])
     else
-      s.add_dependency(%q<uuidtools>, ["~> 2.1"])
+      s.add_dependency(%q<uuid>, ["~> 2.3.2"])
       s.add_dependency(%q<rspec>, ["~> 1.3.0"])
     end
   else
-    s.add_dependency(%q<uuidtools>, ["~> 2.1"])
+    s.add_dependency(%q<uuid>, ["~> 2.3.2"])
     s.add_dependency(%q<rspec>, ["~> 1.3.0"])
   end
 end
