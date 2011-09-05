@@ -15,7 +15,8 @@ describe E20::Ops::Middleware::HostnameMiddleware do
 
   it "logs the hostname when initialized" do
     log_io = StringIO.new
-    E20::Ops::Middleware::HostnameMiddleware.new(app, :logger => Logger.new(log_io))
+    middleware = E20::Ops::Middleware::HostnameMiddleware.new(app, :logger => Logger.new(log_io))
+    status, headers, body = middleware.call({})
     log_io.string.should include("[E20::Ops::Middleware::HostnameMiddleware] Running on: ")
   end
 

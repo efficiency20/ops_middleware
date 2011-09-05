@@ -24,7 +24,8 @@ describe E20::Ops::Middleware::RevisionMiddleware do
 
     it "logs the running revision when initialized" do
       log_io = StringIO.new
-      E20::Ops::Middleware::RevisionMiddleware.new(app, :revision => "rev", :logger => Logger.new(log_io))
+      middleware = E20::Ops::Middleware::RevisionMiddleware.new(app, :revision => "rev", :logger => Logger.new(log_io))
+      status, headers, body = middleware.call({})
       log_io.string.should include("[E20::Ops::Middleware::RevisionMiddleware] Running: rev")
     end
 
