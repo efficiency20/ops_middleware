@@ -14,9 +14,9 @@ module E20
 
         def call(env)
           uuid = @uuid_generator.call.to_s
-          @logger.info "[#{self.class.name}] Transaction ID: #{uuid}"
 
           status, headers, body = @app.call(env)
+          @logger.info "[#{self.class.name}] Transaction ID: #{uuid}"
           headers["X-Transaction"] = uuid
           [status, headers, body]
         end

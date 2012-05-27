@@ -5,16 +5,16 @@ module E20
 
         def initialize(app, options = {})
           @app = app
+          @options = options  
           @hostname = options[:hostname] || Hostname.new
-
-          if (logger = options[:logger])
-            logger.info "[#{self.class.name}] Running on: #{@hostname}"
-          end
         end
 
         def call(env)
           status, headers, body = @app.call(env)
           headers["X-Served-By"] = @hostname.to_s
+          if (logger = @options[:logger])
+            logger.info "[#{self.class.name}] Running on: #{@hostname}"
+          end
           [status, headers, body]
         end
 

@@ -5,15 +5,13 @@ module E20
 
         def initialize(app, options = {})
           @app = app
+          @options = options
           @revision = options[:revision] || Revision.new
-
-          if (logger = options[:logger])
-            logger.info "[#{self.class.name}] Running: #{@revision}"
-          end
         end
 
         def call(env)
-          if env["PATH_INFO"] == "/system/revision"
+          
+          response = if env["PATH_INFO"] == "/system/revision"
             body = "#{@revision}\n"
             [200, { "Content-Type" => "text/plain", "Content-Length" => body.size.to_s }, [body]]
           else
@@ -21,6 +19,12 @@ module E20
             headers["X-Revision"] = @revision.to_s
             [status, headers, body]
           end
+          
+          if (logger = @options[:logger])
+            logger.info "[#{self.class.name}] Running: #{@revision}"
+          end
+          
+          response
         end
 
       end
