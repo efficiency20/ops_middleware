@@ -1,4 +1,3 @@
-require "uuid"
 require "logger"
 
 module E20
@@ -8,7 +7,7 @@ module E20
 
         def initialize(app, options = {})
           @app = app
-          @uuid_generator = options[:uuid_generator] || UUID.method(:generate)
+          @uuid_generator = options[:uuid_generator] || find_uuid_generator
           @logger = options[:logger] || Logger.new(STDOUT)
         end
 
@@ -19,6 +18,14 @@ module E20
           status, headers, body = @app.call(env)
           headers["X-Transaction"] = uuid
           [status, headers, body]
+        end
+
+        def find_uuid_generator
+          require 'securerandom'
+          return SecureRandom.method(:uuid) if SecureRandom.respond_to?(:uuid)
+
+          require 'uuid'
+          UUID.method(:generate)
         end
 
       end
