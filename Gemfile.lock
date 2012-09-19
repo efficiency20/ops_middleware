@@ -1,7 +1,6 @@
 GEM
   remote: http://rubygems.org/
   specs:
-    activesupport (2.3.8)
     gemcutter (0.6.1)
     git (1.2.5)
     jeweler (1.4.0)
@@ -21,7 +20,6 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  activesupport (~> 2.3.8)
   jeweler (~> 1.4.0)
   json_pure (= 1.4.3)
   rake (~> 0.8.7)

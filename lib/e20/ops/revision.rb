@@ -1,5 +1,3 @@
-require "active_support"
-
 module E20
   module Ops
     class Revision
@@ -12,10 +10,10 @@ module E20
         @revision ||= begin
           if revision_file.exist?
             revision_file.read.strip
-          elsif revision_from_git.present?
-            revision_from_git
-          else
+          elsif revision_from_git == ''
             "unknown"
+          else
+            revision_from_git
           end
         end
       end
