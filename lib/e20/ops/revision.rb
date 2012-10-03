@@ -23,7 +23,7 @@ module E20
     private
 
       def revision_from_git
-        @revision_from_git ||= `git rev-parse HEAD`.strip
+        @revision_from_git ||= `git rev-parse HEAD 2>/dev/null`.strip
       end
 
       def revision_file
