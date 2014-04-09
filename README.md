@@ -42,6 +42,8 @@ Create a `config/initializers/ops_middleware.rb` with the following:
 In `config.ru`, add:
 
     use E20::Ops::Middleware::RevisionMiddleware
+    # alternatively, you may specify the git endpoint:
+    # use E20::Ops::Midleware::RevisionMiddleware path_info: '/some/other/revision/endpoint'
     use E20::Ops::Middleware::HostnameMiddleware
     use E20::Ops::Middleware::TransactionIdMiddleware
 

@@ -33,5 +33,11 @@ describe E20::Ops::Middleware::RevisionMiddleware do
       status, headers, body = middleware.call({})
       headers["X-Revision"].should == "the_revision"
     end
+    
+    it "returns the current running revision when configured outside /system/revision" do
+      middleware = E20::Ops::Middleware::RevisionMiddleware.new(app, :revision => "rev", :path_info => '/git/revision')
+      status, headers, body = middleware.call({"PATH_INFO" => "/git/revision"})
+      body.should == ["rev\n"]
+    end
   end
 end
